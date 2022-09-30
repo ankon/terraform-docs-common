@@ -99,9 +99,15 @@ For example, if you apply `A_Variable_Set` and `B_Variable_Set` to the same work
 
 Non-global variable sets always take precedence over global variable sets that are applied to all workspaces within an organization. Terraform does not allow global variable sets to contain variables with the same key, so they cannot conflict.
 
-### 6. `auto.tfvars` Variable Files
+### 6. Variable Definitions Files
 
-Variables in the Terraform Cloud workspace and variables provided through the command line always overwrite variables with the same key from files ending in `auto.tfvars`.
+Variables in the Terraform Cloud workspace and variables provided through the command line always overwrite variables with the same key from files ending in `*.tfvars`.
+
+In Terraform Cloud, if your workspace contains a `terraform.tfvars` file and there are workspace variables, the workspace variables will override the ones in the `terraform.tfvars` file. 
+
+Note that in Terraform Enterprise, if your workspace contains a `terraform.tfvars` file, it will be overwritten by the workspace variables.
+
+Refer to this [section](https://www.terraform.io/language/values/variables#variable-definition-precedence) on Variable Precedence for more details.
 
 ### Precedence Example
 
